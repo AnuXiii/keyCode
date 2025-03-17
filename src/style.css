@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer theme {
+	@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+
+	@font-face {
+		font-family: "dana-bold";
+		src: url(../fonts/dana/dana-fanum-bold.woff2) format("woff2");
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "dana-regular";
+		src: url(../fonts/dana/dana-fanum-regular.woff2) format("woff2");
+		font-display: swap;
+	}
+
+	.font-en {
+		font-family: "Open Sans", serif;
+		font-weight: bold;
+	}
+}
+
+@layer base {
+	body {
+		@apply text-right min-h-screen font-[dana-regular] text-base text-stone-900 dark:text-stone-50 dark:bg-black;
+	}
+
+	@media (max-width: 1200px) {
+		#app {
+			@apply hidden;
+		}
+	}
+
+	.cr {
+		@apply max-w-[1420px] p-8 m-auto;
+	}
+
+	.scale {
+		animation: scale 0.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+	}
+
+	@keyframes scale {
+		from {
+			opacity: 0;
+			transform: translateY(100%);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
+
+@layer utilities {
+	.key-on {
+		display: block;
+		animation: key-on 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+	}
+	@keyframes key-on {
+		to {
+			translate: 50% 0;
+			opacity: 1;
+		}
+	}
+}

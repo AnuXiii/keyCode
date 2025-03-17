@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fa">
+	<head>
+		<meta charset="UTF-8" />
+		<link
+			rel="icon"
+			type="image/svg+xml"
+			href="/images/keypad-outline.svg" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Key Coder</title>
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+		<link
+			rel="stylesheet"
+			href="src/style.css" />
+	</head>
+
+	<body>
+		<div class="text-center items-center justify-center h-screen text-3xl font-en hidden max-[1200px]:flex">
+			Please exit and rerun this application on your pc devices
+		</div>
+		<div id="app">
+			<main class="relative">
+				<div class="fixed inset-0 bg-linear-180 from-black to-violet-500 opacity-20 z-[-1]"></div>
+				<div
+					id="header"
+					class="fixed w-full duration-200 ease-in-out">
+					<div class="cr">
+						<header class="flex justify-between items-center">
+							<div class="logo">
+								<a
+									aria-label="صفحه اصلی"
+									title="صفحه اصلی"
+									href="/"
+									class="font-en text-3xl flex items-center"
+									><span class="text-4xl">K</span>ey<span class="text-violet-500">Coder</span>
+								</a>
+							</div>
+
+							<div class="flex items-center gap-4">
+								<button
+									aria-label="دیدن کی پد ها"
+									title="دیدن کی پد ها"
+									id="keyboard-btn"
+									class="cursor-pointer flex justify-center items-center text-2xl p-2 duration-150 hover:text-violet-500">
+									<ion-icon name="keypad-outline"></ion-icon>
+								</button>
+								<button
+									aria-label="تغییر تم"
+									title="تغییر تم"
+									id="changeTheme"
+									class="cursor-pointer flex justify-center items-center text-2xl p-2 duration-150 hover:text-violet-500">
+									<ion-icon name="contrast-outline"></ion-icon>
+								</button>
+							</div>
+						</header>
+					</div>
+				</div>
+				<!--  -->
+				<div
+					id="hero"
+					class="cr pt-48 duration-200 ease-in-out">
+					<div class="inner flex justify-between gap-8">
+						<div class="flex flex-col gap-8 relative w-full">
+							<div class="flex justify-center">
+								<h1
+									class="text-[10rem] font-en font-bold"
+									id="eventInfo">
+									96
+								</h1>
+							</div>
+							<div class="grid auto-rows-max grid-cols-2 gap-8 font-en">
+								<div
+									title="click to copy"
+									class="code-box relative cursor-pointer bg-violet-200 shadow-md shadow-violet-950/20 dark:bg-stone-950 flex flex-col gap-4 overflow-hidden border border-white/30 rounded-md h-max dark:shadow-md dark:shadow-violet-500/20 duration-150 ease-in hover:translate-y-1 hover:shadow-none">
+									<header
+										class="font-thin text-center text-stone-950/60 bg-violet-50 dark:text-violet-50 dark:bg-violet-500/80 w-full px-10 py-2 text-sm select-none">
+										event.code
+									</header>
+									<h3
+										class="font-bold text-2xl text-center dark:text-white/80 px-10 pb-4 select-none"
+										id="eventCode">
+										Code
+									</h3>
+								</div>
+								<div
+									title="click to copy"
+									class="code-box relative cursor-pointer bg-violet-200 shadow-md shadow-violet-950/20 dark:bg-stone-950 flex flex-col gap-4 overflow-hidden border border-white/30 rounded-md h-max dark:shadow-md dark:shadow-violet-500/20 duration-150 ease-in hover:translate-y-1 hover:shadow-none">
+									<header
+										class="font-thin text-center text-stone-950/60 bg-violet-50 dark:text-violet-50 dark:bg-violet-500/80 w-full px-10 py-2 text-sm select-none">
+										event.keycode
+									</header>
+									<h3
+										class="font-bold text-2xl text-center dark:text-white/80 px-10 pb-4 select-none"
+										id="eventKeyCode">
+										Keycode
+									</h3>
+								</div>
+								<div
+									title="click to copy"
+									class="code-box relative cursor-pointer bg-violet-200 shadow-md shadow-violet-950/20 dark:bg-stone-950 flex flex-col gap-4 overflow-hidden border border-white/30 rounded-md h-max dark:shadow-md dark:shadow-violet-500/20 duration-150 ease-in hover:translate-y-1 hover:shadow-none">
+									<header
+										class="font-thin text-center text-stone-950/60 bg-violet-50 dark:text-violet-50 dark:bg-violet-500/80 w-full px-10 py-2 text-sm select-none">
+										event.location
+									</header>
+									<h3
+										class="font-bold text-2xl text-center dark:text-white/80 px-10 pb-4 select-none"
+										id="eventLocation">
+										Location
+									</h3>
+								</div>
+								<div
+									title="click to copy"
+									class="code-box relative cursor-pointer bg-violet-200 shadow-md shadow-violet-950/20 dark:bg-stone-950 flex flex-col gap-4 overflow-hidden border border-white/30 rounded-md h-max dark:shadow-md dark:shadow-violet-500/20 duration-150 ease-in hover:translate-y-1 hover:shadow-none">
+									<header
+										class="font-thin text-center text-stone-950/60 bg-violet-50 dark:text-violet-50 dark:bg-violet-500/80 w-full px-10 py-2 text-sm select-none">
+										event.key
+									</header>
+									<h3
+										class="font-bold text-2xl text-center dark:text-white/80 px-10 pb-4 select-none"
+										id="eventKey">
+										Key
+									</h3>
+								</div>
+							</div>
+						</div>
+						<!--  -->
+						<div class="flex flex-col items-end gap-4 w-full">
+							<h1 class="text-4xl font-[dana-bold]">
+								بزن رو کلید، تا <span class="text-violet-500">شناساییش</span> کنم
+							</h1>
+							<p class="dark:text-white/80">.برای دیدن اطلاعات بیشتر فقط کافیه تایپ کنی</p>
+							<h2 class="grid grid-cols-4 text-6xl font-en font-thin mt-8">
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md -translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md -translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md -translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md -translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md -translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md translate-y-2"></div>
+								<div
+									class="number w-max p-8 bg-linear-0 from-violet-50/20 to-stone-50/20 text-stone-950 dark:bg-conic-180 dark:from-violet-600/20 dark:via-indigo-50/10 dark:to-violet-600/20 dark:text-white/90 flex justify-center items-center border border-white/20 rounded-md -translate-y-2"></div>
+							</h2>
+						</div>
+					</div>
+				</div>
+			</main>
+		</div>
+		<div
+			id="keyboard-frame"
+			class="cr backdrop-blur-3xl fixed w-full right-[50%] border border-white/20 rounded-md p-4 translate-y-full opacity-0 hidden">
+			<div class="keyboard-inner grid grid-rows-6 grid-cols-16 gap-2 font-en font-thin text-white/60 select-none">
+				<button
+					data-key="Escape"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Esc
+				</button>
+				<button
+					data-key="F1"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F1
+				</button>
+				<button
+					data-key="F2"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F2
+				</button>
+				<button
+					data-key="F3"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F3
+				</button>
+				<button
+					data-key="F4"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F4
+				</button>
+				<button
+					data-key="F5"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F5
+				</button>
+				<button
+					data-key="F6"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F6
+				</button>
+				<button
+					data-key="F7"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F7
+				</button>
+				<button
+					data-key="F8"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F8
+				</button>
+				<button
+					data-key="F9"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F9
+				</button>
+				<button
+					data-key="F10"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F10
+				</button>
+				<button
+					data-key="F11"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F11
+				</button>
+				<button
+					data-key="F12"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					F12
+				</button>
+				<button
+					data-key="ScrollLock"
+					class="uppercase col-span-2 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					ScrollLock
+				</button>
+				<button
+					data-key="Pause"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Pause
+				</button>
+				<button
+					data-key="`"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					`
+				</button>
+				<button
+					data-key="1"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					1
+				</button>
+				<button
+					data-key="2"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					2
+				</button>
+				<button
+					data-key="3"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					3
+				</button>
+				<button
+					data-key="4"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					4
+				</button>
+				<button
+					data-key="5"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					5
+				</button>
+				<button
+					data-key="6"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					6
+				</button>
+				<button
+					data-key="7"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					7
+				</button>
+				<button
+					data-key="8"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					8
+				</button>
+				<button
+					data-key="9"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					9
+				</button>
+				<button
+					data-key="0"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					0
+				</button>
+				<button
+					data-key="-"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					-
+				</button>
+				<button
+					data-key="="
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					=
+				</button>
+				<button
+					data-key="Backspace"
+					class="uppercase col-span-3 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Backspace
+				</button>
+				<button
+					data-key="Tap"
+					class="uppercase col-span-2 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Tap
+				</button>
+				<button
+					data-key="q"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					q
+				</button>
+				<button
+					data-key="w"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					w
+				</button>
+				<button
+					data-key="e"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					e
+				</button>
+				<button
+					data-key="r"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					r
+				</button>
+				<button
+					data-key="t"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					t
+				</button>
+				<button
+					data-key="y"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					y
+				</button>
+				<button
+					data-key="u"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					u
+				</button>
+				<button
+					data-key="i"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					i
+				</button>
+				<button
+					data-key="o"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					o
+				</button>
+				<button
+					data-key="p"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					p
+				</button>
+				<button
+					data-key="["
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					[
+				</button>
+				<button
+					data-key="]"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					]
+				</button>
+				<button
+					data-key="\"
+					class="uppercase col-span-2 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					\
+				</button>
+				<button
+					data-key="CapsLock"
+					class="uppercase col-span-2 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					CapsLock
+				</button>
+				<button
+					data-key="a"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					a
+				</button>
+				<button
+					data-key="s"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					s
+				</button>
+				<button
+					data-key="d"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					d
+				</button>
+				<button
+					data-key="f"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					f
+				</button>
+				<button
+					data-key="g"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					g
+				</button>
+				<button
+					data-key="h"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					h
+				</button>
+				<button
+					data-key="j"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					j
+				</button>
+				<button
+					data-key="k"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					k
+				</button>
+				<button
+					data-key="l"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					l
+				</button>
+				<button
+					data-key=";"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					;
+				</button>
+				<button
+					data-key="'"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					'
+				</button>
+				<button
+					data-key="Enter"
+					class="uppercase col-span-3 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					<ion-icon name="enter-outline"></ion-icon>
+				</button>
+				<button
+					data-key="Shift"
+					class="uppercase col-span-2 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Shift
+				</button>
+
+				<button
+					data-key="z"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					z
+				</button>
+				<button
+					data-key="x"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					x
+				</button>
+				<button
+					data-key="c"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					c
+				</button>
+				<button
+					data-key="v"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					v
+				</button>
+				<button
+					data-key="b"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					b
+				</button>
+				<button
+					data-key="n"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					n
+				</button>
+				<button
+					data-key="m"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					m
+				</button>
+				<button
+					data-key=","
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					,
+				</button>
+				<button
+					data-key="."
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					.
+				</button>
+				<button
+					data-key="/"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					/
+				</button>
+				<button
+					data-key="Shift"
+					class="uppercase col-span-2 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Shift
+				</button>
+				<button
+					data-key="ArrowUp"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					<ion-icon name="arrow-up-outline"></ion-icon>
+				</button>
+				<button
+					data-key="ArrowUp"
+					class="opacity-0 pointer-events-none select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					<ion-icon name="arrow-up-outline"></ion-icon>
+				</button>
+				<button
+					data-key="Control"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Ctrl
+				</button>
+				<button
+					data-key="Meta"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					<ion-icon name="logo-windows"></ion-icon>
+				</button>
+				<button
+					data-key="Alt"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Alt
+				</button>
+				<button
+					data-key=" "
+					class="uppercase col-span-6 cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					space
+				</button>
+				<button
+					data-key="Alt"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Alt
+				</button>
+				<button
+					data-key="Alt"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					fn
+				</button>
+				<button
+					data-key="ContextMenu"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					CM
+				</button>
+				<button
+					data-key="Control"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					Ctrl
+				</button>
+				<button
+					data-key="ArrowLeft"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					<ion-icon name="arrow-back-outline"></ion-icon>
+				</button>
+				<button
+					data-key="ArrowDown"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					<ion-icon name="arrow-down-outline"></ion-icon>
+				</button>
+				<button
+					data-key="ArrowRight"
+					class="select-none uppercase cursor-pointer shadow-[2px_5px_10px_#121212] border border-white/20 border-r-transparent border-b-transparent bg-stone-950 p-2 rounded-md duration-100 active:border-t-transparent active:border-l-transparent active:border-r-white/20 active:border-b-white/20 active:shadow-none">
+					<ion-icon name="arrow-forward-outline"></ion-icon>
+				</button>
+			</div>
+		</div>
+		<!--  -->
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+		<script
+			type="module"
+			src="/src/main.js"></script>
+	</body>
+</html>
