@@ -1,8 +1,11 @@
 import Toastify from "toastify-js";
-import { themeChanger, themeIcon, userTheme, systemTheme, themeCheck, themeSwitch } from "./darkMode";
+
+import "./keyBoard";
+const keyboard = document.getElementById("keyboard");
+
+import "./darkMode";
 const numbers = document.querySelectorAll(".number");
 const keyboardButton = document.querySelector("#keyboard-btn");
-const keyboard = document.querySelector("#keyboard-frame");
 const header = document.querySelector("#header");
 const hero = document.querySelector("#hero");
 const eventInfo = document.querySelector("#eventInfo");
@@ -25,6 +28,10 @@ function callTostify(msg, bgColor) {
 		},
 	}).showToast();
 }
+
+window.addEventListener("load", () => {
+	detectDevice();
+});
 
 function detectDevice() {
 	if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -114,7 +121,3 @@ function detectDevice() {
 		setInterval(updateNumbers, 1000);
 	}
 }
-
-window.addEventListener("DOMContentLoaded", () => {
-	detectDevice();
-});

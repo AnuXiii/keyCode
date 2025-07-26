@@ -1,21 +1,22 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap"); */
+
+@font-face {
+	font-family: "dana-bold";
+	src: url(../fonts/dana/dana-fanum-bold.woff2) format("woff2");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "dana-regular";
+	src: url(../fonts/dana/dana-fanum-regular.woff2) format("woff2");
+	font-display: swap;
+}
+
 @import "tailwindcss";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer theme {
-	@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
-
-	@font-face {
-		font-family: "dana-bold";
-		src: url(../fonts/dana/dana-fanum-bold.woff2) format("woff2");
-		font-display: swap;
-	}
-
-	@font-face {
-		font-family: "dana-regular";
-		src: url(../fonts/dana/dana-fanum-regular.woff2) format("woff2");
-		font-display: swap;
-	}
-
 	.font-en {
 		font-family: "Open Sans", serif;
 		font-weight: bold;
